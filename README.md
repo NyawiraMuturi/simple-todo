@@ -1,31 +1,12 @@
-## React Tutorial – The Beginners Guide to Learning React JS in 2020
+# React + Vite
 
-[To follow this React tutorial](https://ibaslogic.com/blog/react-tutorial-for-beginners/)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Clone the starter project
+Currently, two official plugins are available:
 
-You can download or clone this project by running this command from your terminal:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-```
-git clone https://github.com/Ibaslogic/simple-todo-app
-```
+## Expanding the ESLint configuration
 
-This will create a directory in the name of the project folder.
-
-Once you have the project files and folders bootstrapped, open it with your text editor.
-
-Next, switch inside the project directory and run:
-
-```
-npm install
-```
-
-This will install all the necessary dependencies in the local `node_modules` folder.
-
-Finally, start your development server by running:
-
-```
-npm start
-```
-
-You should see the app in your browser address bar at [http://localhost:3000](http://localhost:3000)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
