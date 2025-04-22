@@ -1,70 +1,37 @@
 import React, {useState} from "react";
-import TodosList from "./TodosList";
+import { DndContext , closestCorners} from "@dnd-kit/core";
+import StatusColumn from "./StatusColumn";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
-import { v4 as uuidv4 } from "uuid";
+import { useTodoContext } from "../lib/useTodoContext";
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: uuidv4(),
-      title: "Setup development environment",
-      completed: true,
-    },
-    {
-      id: uuidv4(),
-      title: "Develop website and add content",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "Deploy to live server",
-      completed: false,
-    },
-  ]);
+  const { handleDragEnd, statuses, statusTitles,  } = useTodoContext();
+  
 
-  const handleChange = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return{
-            ...todo,
-            completed: !todo.completed
-          }
-        }
-        return todo;
-      })
-    );
-  }
-
-  const delTodo = (id) => {
-    setTodos(
-      todos.filter((todo) => {
-        return todo.id !== id;
-      })
-    );
-  }
-
-const addTodoItem = (title) => {
-  const newTodo = {
-    id: uuidv4(),
-    title: title,
-    completed: false,
-  };
-  setTodos([...todos, newTodo]);
- }
   return (
-    <div className="container">
+    <div className="max-w-6xl mx-auto p-4">
       <Header />
-      <InputTodo addTodoProps={addTodoItem} />
-      <TodosList
-        todos={todos}
-        handleChangeProps={handleChange}
-        deleteTodoProps={delTodo}
-      />
+      <InputTodo />
+      
+      <DndContext
+        collisionDetection={closestCorners}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="flex flex-wrap gap-4">
+          {Object.values(statuses).map(status => (
+            <StatusColumn 
+              key={status} 
+              id={status}
+              title={statusTitles[status]} 
+            />
+          ))}
+        </div>
+      </DndContext>
     </div>
   );
-}
+};
+
 
 export default TodoContainer
 
