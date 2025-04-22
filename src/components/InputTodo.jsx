@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
 const InputTodo = (props) => {
+
+  // react -> fiber -> hooks -> onMount -> return value within fiber -> update hook -> retun the new value 
+  // const [state, dispatch] = useState(initialState); dispatch a function that requests a change in state
+  
   const [title, setTitle] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [showTagSelector, setShowTagSelector] = useState(false);
